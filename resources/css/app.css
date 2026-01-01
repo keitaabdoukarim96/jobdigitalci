@@ -1,0 +1,46 @@
+/* Import Font Awesome */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles pour JobDigitalCI */
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply font-sans antialiased text-gray-900 bg-white;
+    }
+}
+
+@layer components {
+    /* Bouton primaire JobDigitalCI */
+    .btn-jobdigital {
+        @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg;
+    }
+
+    /* Carte d'offre d'emploi */
+    .job-card {
+        @apply bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 border border-gray-100;
+    }
+
+    /* Badge */
+    .badge-featured {
+        @apply bg-accent-400 text-gray-900 font-bold text-xs px-3 py-1 rounded-full;
+    }
+
+    .badge-new {
+        @apply bg-secondary-500 text-white font-bold text-xs px-3 py-1 rounded-full;
+    }
+}
+
+@layer utilities {
+    /* Animation pour le préchargement */
+    .loader {
+        @apply animate-spin rounded-full border-4 border-gray-200 border-t-primary-500;
+    }
+}
