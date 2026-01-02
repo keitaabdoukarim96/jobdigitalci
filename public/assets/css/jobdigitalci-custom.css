@@ -1,0 +1,1728 @@
+/*
+==============================================
+JobDigitalCI - Customizations
+Charte graphique:
+- Rouge principal: #fd1616 (GARDE la couleur du template Jovie)
+- Bleu secondaire: #052c65
+- Navbar: Texte blanc #fff
+==============================================
+*/
+
+/* Variables de couleurs JobDigitalCI */
+:root {
+    --primary-red: #fd1616;       /* Rouge principal (GARDE du template) */
+    --secondary-blue: #052c65;    /* Bleu secondaire JobDigitalCI */
+    --white: #ffffff;             /* Blanc */
+    --dark-text: #1f2937;         /* Texte foncé */
+}
+
+/* ===================================
+   1. NAVBAR - Texte blanc
+   =================================== */
+
+/* Logo Texte */
+.navbar-brand-text,
+.logo-text {
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    color: var(--white) !important;
+    text-decoration: none !important;
+    letter-spacing: -0.5px !important;
+    display: inline-block !important;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif !important;
+}
+
+.navbar-brand-text span,
+.logo-text span {
+    color: var(--primary-red) !important;
+}
+
+.navbar-brand-text:hover,
+.logo-text:hover {
+    color: var(--white) !important;
+    opacity: 0.9 !important;
+    text-decoration: none !important;
+}
+
+/* Logo dans le footer */
+.footer-logo .logo-text {
+    font-size: 32px !important;
+    margin-bottom: 15px !important;
+}
+
+/* Cache les images logo */
+.navbar-brand img,
+.footer-logo img,
+.mobile-nav .logo img {
+    display: none !important;
+}
+
+/* Texte de navigation blanc */
+.navbar-area .main-nav nav ul li a {
+    color: var(--white) !important;
+}
+
+.navbar-area .main-nav nav ul li a:hover,
+.navbar-area .main-nav nav ul li a.active {
+    color: var(--primary-red) !important;
+}
+
+/* Dropdown menu - Redesign visible et moderne */
+.navbar-area .main-nav nav ul li .dropdown-menu {
+    background: var(--white) !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    padding: 12px 0 !important;
+    margin-top: 12px !important;
+    min-width: 220px !important;
+}
+
+.navbar-area .main-nav nav ul li .dropdown-menu li {
+    padding: 0 !important;
+}
+
+.navbar-area .main-nav nav ul li .dropdown-menu li a {
+    color: var(--dark-text) !important;
+    padding: 12px 25px !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    border-left: 3px solid transparent !important;
+}
+
+.navbar-area .main-nav nav ul li .dropdown-menu li a:hover {
+    color: var(--primary-red) !important;
+    background: rgba(253, 22, 22, 0.05) !important;
+    border-left-color: var(--primary-red) !important;
+    padding-left: 30px !important;
+}
+
+/* Boutons dans la navbar */
+.navbar-area .other-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.navbar-area .other-option .default-btn {
+    padding: 12px 28px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    white-space: nowrap !important;
+}
+
+/* Bouton S'inscrire - Style outline */
+.navbar-area .other-option .btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--white) !important;
+    color: var(--white) !important;
+}
+
+.navbar-area .other-option .btn-outline:hover {
+    background: var(--white) !important;
+    color: var(--primary-red) !important;
+    border-color: var(--white) !important;
+}
+
+/* ===================================
+   2. CORRIGER LES LIENS COLORÉS
+   =================================== */
+
+/* Supprimer la couleur orange sur tous les liens par défaut */
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* Seulement les liens dans le footer peuvent être colorés au hover */
+.footer-widget ul li a:hover {
+    color: var(--primary-red) !important;
+}
+
+/* Les boutons gardent leur style */
+.default-btn,
+.find-btn,
+.signin-btn,
+.signup-btn,
+.subscribe-btn {
+    color: var(--white) !important;
+}
+
+/* Titres de jobs - pas de couleur par défaut */
+.job-card h3 a {
+    color: var(--dark-text) !important;
+}
+
+.job-card h3 a:hover {
+    color: var(--primary-red) !important;
+}
+
+/* Mots-clés du banner - PAS de couleur */
+.keyword li a {
+    color: var(--white) !important;
+}
+
+.keyword li a:hover {
+    color: var(--primary-red) !important;
+}
+
+/* ===================================
+   3. BANNER SECTION - REDESIGN MODERNE
+   =================================== */
+
+.banner-section {
+    background-image: linear-gradient(135deg, rgba(5, 44, 101, 0.95), rgba(3, 20, 59, 0.95)), url('../img/banner-bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    min-height: 600px !important;
+    padding: 120px 0 80px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Pattern overlay moderne */
+.banner-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+    z-index: 1 !important;
+}
+
+.banner-section .d-table {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 500px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.banner-section .d-table-cell {
+    width: 100% !important;
+}
+
+.banner-section .banner-content {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+}
+
+/* Paragraphe subtitle - moderne */
+.banner-section .banner-content p {
+    text-align: center !important;
+    margin-bottom: 25px !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+}
+
+/* Titre principal - impact */
+.banner-section .banner-content h2 {
+    font-size: 52px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 50px !important;
+    text-align: center !important;
+    color: var(--white) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    display: block !important;
+    width: 100% !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    position: relative !important;
+}
+
+.banner-section .banner-content h2::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100px !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, var(--primary-red), var(--secondary-blue)) !important;
+    border-radius: 2px !important;
+}
+
+/* Formulaire de recherche - Card moderne NOUVELLE GÉNÉRATION */
+.banner-form {
+    max-width: 1100px !important;
+    margin: 0 auto 40px !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    padding: 40px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Espacement des lignes */
+.banner-form .form-row-1 {
+    margin-bottom: 35px !important;
+    position: relative !important;
+}
+
+.banner-form .form-filters {
+    margin-bottom: 25px !important;
+}
+
+.banner-form .form-row-submit {
+    margin-bottom: 0 !important;
+    margin-top: 15px !important;
+}
+
+.banner-form .row {
+    margin: 0 -12px !important;
+}
+
+.banner-form [class*="col-"] {
+    padding: 0 12px !important;
+    margin-bottom: 20px !important;
+}
+
+.banner-form .form-group {
+    margin-bottom: 0 !important;
+}
+
+/* Labels modernes avec icônes */
+.banner-form label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: var(--secondary-blue) !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+}
+
+.banner-form label i {
+    font-size: 16px !important;
+    color: var(--primary-red) !important;
+}
+
+/* Inputs et selects modernes */
+.banner-form .form-control {
+    height: 58px !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 0 22px !important;
+    font-size: 15px !important;
+    color: var(--dark-text) !important;
+    background: #ffffff !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.banner-form .form-control:hover {
+    border-color: #d1d5db !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.banner-form .form-control:focus {
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 0 0 5px rgba(253, 22, 22, 0.12), 0 4px 16px rgba(253, 22, 22, 0.15) !important;
+    outline: none !important;
+    transform: translateY(-1px) !important;
+}
+
+.banner-form .form-control::placeholder {
+    color: #9ca3af !important;
+    font-weight: 400 !important;
+}
+
+/* ===================================
+   FILTRES PILLS - Design Épuré Moderne
+   =================================== */
+
+.banner-form .filter-group {
+    text-align: center !important;
+}
+
+.banner-form .filter-label {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: var(--secondary-blue) !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    justify-content: center !important;
+}
+
+.banner-form .filter-label i {
+    font-size: 13px !important;
+    color: var(--primary-red) !important;
+}
+
+.banner-form .filter-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Cache les inputs radio */
+.banner-form .filter-buttons input[type="radio"] {
+    display: none !important;
+}
+
+/* Style des boutons pills */
+.banner-form .filter-btn {
+    display: inline-block !important;
+    padding: 8px 16px !important;
+    background: #f3f4f6 !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 20px !important;
+    color: #6b7280 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+}
+
+.banner-form .filter-btn:hover {
+    background: #e5e7eb !important;
+    border-color: #d1d5db !important;
+    color: var(--secondary-blue) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Style du bouton actif (sélectionné) */
+.banner-form .filter-buttons input[type="radio"]:checked + .filter-btn {
+    background: linear-gradient(135deg, var(--primary-red) 0%, #ff3333 100%) !important;
+    border-color: var(--primary-red) !important;
+    color: var(--white) !important;
+    box-shadow: 0 4px 16px rgba(253, 22, 22, 0.35) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+}
+
+/* Bouton de recherche - ULTRA MODERNE */
+.banner-form .find-btn {
+    width: 100% !important;
+    height: 58px !important;
+    background: linear-gradient(135deg, var(--primary-red) 0%, #ff3333 100%) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: var(--white) !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-top: 0 !important;
+    box-shadow: 0 6px 24px rgba(253, 22, 22, 0.45), 0 2px 8px rgba(253, 22, 22, 0.25) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+}
+
+/* Effet shine sur le bouton */
+.banner-form .find-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    transition: left 0.6s !important;
+}
+
+.banner-form .find-btn:hover::before {
+    left: 100% !important;
+}
+
+.banner-form .find-btn:hover {
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, #0a3d7a 100%) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 12px 32px rgba(5, 44, 101, 0.5), 0 4px 12px rgba(5, 44, 101, 0.3) !important;
+}
+
+.banner-form .find-btn:active {
+    transform: translateY(-1px) scale(0.98) !important;
+}
+
+.banner-form .find-btn i {
+    font-size: 22px !important;
+    transition: transform 0.3s !important;
+}
+
+.banner-form .find-btn:hover i:first-child {
+    animation: pulse 1s infinite !important;
+}
+
+.banner-form .find-btn:hover i:last-child {
+    transform: translateX(5px) !important;
+}
+
+.banner-form .find-btn span {
+    font-weight: 800 !important;
+}
+
+/* Animation pulse pour l'icône de recherche */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Mots-clés tendance - Liste horizontale moderne */
+.keyword {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.keyword li {
+    margin: 0 !important;
+}
+
+.keyword li:first-child {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.keyword li a {
+    display: inline-block !important;
+    padding: 8px 16px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    color: var(--white) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.keyword li a:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: var(--white) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+    .banner-section {
+        min-height: 550px !important;
+        padding: 100px 0 60px !important;
+    }
+
+    .banner-section .banner-content h2 {
+        font-size: 42px !important;
+    }
+
+    .banner-form {
+        padding: 35px 30px !important;
+    }
+
+    .banner-form .form-row-1 {
+        margin-bottom: 30px !important;
+    }
+
+    .banner-form .form-filters {
+        margin-bottom: 22px !important;
+    }
+
+    .banner-form [class*="col-"] {
+        margin-bottom: 18px !important;
+    }
+
+    .banner-form .filter-btn {
+        padding: 7px 14px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .banner-section {
+        min-height: auto !important;
+        padding: 80px 0 50px !important;
+        background-attachment: scroll !important;
+    }
+
+    .banner-section .banner-content p {
+        font-size: 12px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .banner-section .banner-content h2 {
+        font-size: 32px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 35px !important;
+    }
+
+    .banner-form {
+        padding: 30px 20px !important;
+        border-radius: 16px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .banner-form .form-row-1 {
+        margin-bottom: 25px !important;
+    }
+
+    .banner-form .form-filters {
+        margin-bottom: 20px !important;
+    }
+
+    .banner-form .form-row-submit {
+        margin-top: 10px !important;
+    }
+
+    .banner-form .form-row-1 [class*="col-"] {
+        margin-bottom: 18px !important;
+    }
+
+    .banner-form .form-row-1 [class*="col-"]:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .banner-form .find-btn {
+        margin-top: 0 !important;
+        height: 52px !important;
+        font-size: 14px !important;
+        padding: 0 20px !important;
+    }
+
+    .banner-form .find-btn i {
+        font-size: 18px !important;
+    }
+
+    .banner-form .find-btn span {
+        font-size: 14px !important;
+    }
+
+    .banner-form label {
+        font-size: 11px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .banner-form .form-control {
+        height: 54px !important;
+        font-size: 14px !important;
+    }
+
+    /* Filtres pills en mobile */
+    .banner-form .filter-label {
+        font-size: 9px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .banner-form .filter-label i {
+        font-size: 11px !important;
+    }
+
+    .banner-form .filter-buttons {
+        gap: 6px !important;
+    }
+
+    .banner-form .filter-btn {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        border-radius: 18px !important;
+    }
+
+    .keyword {
+        gap: 8px !important;
+    }
+
+    .keyword li a {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* ===================================
+   4. CATEGORIES SECTION - REDESIGN ULTRA MODERNE
+   =================================== */
+
+.categories-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+    padding-top: 80px !important;
+    padding-bottom: 50px !important;
+    position: relative !important;
+}
+
+.categories-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fd1616' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+    pointer-events: none !important;
+}
+
+.categories-section .section-title h2 {
+    font-size: 38px !important;
+    font-weight: 800 !important;
+    color: var(--dark-text) !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+}
+
+.categories-section .section-title p {
+    font-size: 16px !important;
+    color: #6b7280 !important;
+    margin-bottom: 50px !important;
+}
+
+/* Category Link */
+.category-link {
+    text-decoration: none !important;
+    display: block !important;
+    height: 100% !important;
+}
+
+/* Category Card - Design WOW */
+.category-card {
+    background: var(--white) !important;
+    border-radius: 12px !important;
+    padding: 25px 18px !important;
+    text-align: center !important;
+    position: relative !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 2px solid #e5e7eb !important;
+    overflow: hidden !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Effet de brillance au survol - DÉSACTIVÉ */
+
+/* Icon Container */
+.category-icon {
+    width: 60px !important;
+    height: 60px !important;
+    margin: 0 auto 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+    border-radius: 50% !important;
+    position: relative !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(253, 22, 22, 0.15) !important;
+}
+
+.category-icon i {
+    font-size: 28px !important;
+    color: var(--primary-red) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: block !important;
+    line-height: 1 !important;
+    position: relative !important;
+    top: 11px !important;
+}
+
+/* Hover Effect on Icon - DÉSACTIVÉ */
+
+/* Title */
+.category-card h3 {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--dark-text) !important;
+    margin-bottom: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover Effect on Title - DÉSACTIVÉ */
+
+/* Job Count */
+.category-card .job-count {
+    font-size: 12px !important;
+    color: #6b7280 !important;
+    margin-bottom: 0 !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Arrow Icon */
+.category-arrow {
+    position: absolute !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 35px !important;
+    height: 35px !important;
+    background: #f3f4f6 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    transform: translateX(-10px) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.category-arrow i {
+    font-size: 20px !important;
+    color: var(--primary-red) !important;
+}
+
+/* Hover Effect on Arrow - DÉSACTIVÉ */
+
+/* Hover Effect on Card - DÉSACTIVÉ */
+
+/* Responsive Categories */
+@media only screen and (max-width: 991px) {
+    .categories-section .section-title h2 {
+        font-size: 32px !important;
+    }
+
+    .category-icon {
+        width: 70px !important;
+        height: 70px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .category-icon i {
+        font-size: 32px !important;
+    }
+
+    .category-card {
+        padding: 30px 20px !important;
+    }
+
+    .category-card h3 {
+        font-size: 16px !important;
+    }
+
+    .category-card .job-count {
+        font-size: 13px !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .categories-section {
+        padding-top: 60px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .categories-section .section-title h2 {
+        font-size: 28px !important;
+    }
+
+    .categories-section .section-title p {
+        font-size: 14px !important;
+        margin-bottom: 35px !important;
+    }
+
+    .category-icon {
+        width: 65px !important;
+        height: 65px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .category-icon i {
+        font-size: 28px !important;
+    }
+
+    .category-card {
+        padding: 25px 15px !important;
+    }
+
+    .category-card h3 {
+        font-size: 15px !important;
+    }
+
+    .category-card .job-count {
+        font-size: 12px !important;
+    }
+
+    .category-arrow {
+        width: 30px !important;
+        height: 30px !important;
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+
+    .category-arrow i {
+        font-size: 18px !important;
+    }
+}
+
+/* ===================================
+   5. JOBS SECTION
+   =================================== */
+
+.job-section {
+    padding-top: 80px !important;
+    padding-bottom: 50px !important;
+}
+
+/* Nouvelle Job Card Verticale - 3 par ligne */
+.job-card-vertical {
+    background: var(--white) !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+.job-card-vertical:hover {
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 8px 24px rgba(253, 22, 22, 0.15) !important;
+    transform: translateY(-5px) !important;
+}
+
+.job-card-vertical .company-logo-top {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 20px !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.job-card-vertical .company-logo-top img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.job-card-vertical h3 {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+    line-height: 1.4 !important;
+}
+
+.job-card-vertical h3 a {
+    color: var(--dark-text) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.job-card-vertical h3 a:hover {
+    color: var(--primary-red) !important;
+}
+
+.job-card-vertical .job-meta {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+    flex-grow: 1 !important;
+}
+
+.job-card-vertical .job-meta span {
+    display: flex !important;
+    align-items: center !important;
+    font-size: 14px !important;
+    color: #6b7280 !important;
+}
+
+.job-card-vertical .job-meta span i {
+    color: var(--primary-red) !important;
+    margin-right: 8px !important;
+    font-size: 16px !important;
+}
+
+.job-card-vertical .job-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #e5e7eb !important;
+}
+
+.job-card-vertical .job-time {
+    font-size: 12px !important;
+    color: #9ca3af !important;
+    font-style: italic !important;
+}
+
+.job-card-vertical .default-btn.btn-small {
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+}
+
+/* Ancienne Job Card - Garder pour compatibilité */
+.job-card {
+    background: var(--white) !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    margin-bottom: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.job-card:hover {
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 5px 20px rgba(253, 22, 22, 0.1) !important;
+}
+
+.job-info ul li i {
+    color: var(--primary-red) !important;
+    margin-right: 5px !important;
+}
+
+/* ===================================
+   6. HOW IT WORKS SECTION - REDESIGN ULTRA MODERNE
+   =================================== */
+
+.how-it-works-section {
+    background-image: linear-gradient(135deg, rgba(5, 44, 101, 0.97), rgba(3, 20, 59, 0.97)), url('../img/banner-bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    padding: 100px 0 80px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Pattern overlay moderne */
+.how-it-works-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+    z-index: 1 !important;
+}
+
+/* Section Title dans How It Works */
+.how-it-works-section .section-title {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-bottom: 60px !important;
+}
+
+.how-it-works-section .section-title h2 {
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    color: var(--white) !important;
+    margin-bottom: 15px !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.how-it-works-section .section-title p {
+    font-size: 18px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+/* Step Card - Design WOW */
+.step-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-radius: 16px !important;
+    padding: 40px 25px !important;
+    text-align: center !important;
+    position: relative !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    z-index: 2 !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.step-card:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 20px 60px rgba(253, 22, 22, 0.25) !important;
+    border-color: var(--primary-red) !important;
+}
+
+/* Step Number Badge */
+.step-number {
+    position: absolute !important;
+    top: -20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: linear-gradient(135deg, var(--primary-red) 0%, #ff3333 100%) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: var(--white) !important;
+    box-shadow: 0 8px 24px rgba(253, 22, 22, 0.4) !important;
+    border: 4px solid rgba(255, 255, 255, 0.98) !important;
+    z-index: 3 !important;
+}
+
+/* Step Icon */
+.step-icon {
+    width: 90px !important;
+    height: 90px !important;
+    margin: 30px auto 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+    border-radius: 50% !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 8px 24px rgba(253, 22, 22, 0.15) !important;
+}
+
+.step-icon i {
+    font-size: 42px !important;
+    color: var(--primary-red) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.step-card:hover .step-icon {
+    background: linear-gradient(135deg, var(--primary-red) 0%, #ff3333 100%) !important;
+    transform: rotate(360deg) scale(1.1) !important;
+    box-shadow: 0 12px 32px rgba(253, 22, 22, 0.35) !important;
+}
+
+.step-card:hover .step-icon i {
+    color: var(--white) !important;
+}
+
+/* Step Title */
+.step-card h3 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--dark-text) !important;
+    margin-bottom: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.step-card:hover h3 {
+    color: var(--primary-red) !important;
+}
+
+/* Step Description */
+.step-card p {
+    font-size: 14px !important;
+    color: #6b7280 !important;
+    line-height: 1.7 !important;
+    margin: 0 !important;
+}
+
+/* Step Connector - Flèche entre les étapes */
+.step-connector {
+    position: absolute !important;
+    top: 50% !important;
+    right: -30px !important;
+    transform: translateY(-50%) !important;
+    width: 30px !important;
+    height: 2px !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    z-index: 1 !important;
+}
+
+.step-connector::after {
+    content: '\ea5a' !important;
+    font-family: 'boxicons' !important;
+    position: absolute !important;
+    right: -10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 20px !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Cache le connector sur la dernière carte */
+.row .col-lg-3:last-child .step-connector,
+.row .col-md-6:nth-child(4) .step-connector {
+    display: none !important;
+}
+
+/* Responsive - Tablet */
+@media only screen and (max-width: 991px) {
+    .how-it-works-section {
+        padding: 80px 0 60px !important;
+        background-attachment: scroll !important;
+    }
+
+    .how-it-works-section .section-title h2 {
+        font-size: 36px !important;
+    }
+
+    .how-it-works-section .section-title p {
+        font-size: 16px !important;
+    }
+
+    .step-card {
+        padding: 35px 20px !important;
+    }
+
+    .step-icon {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 25px auto 20px !important;
+    }
+
+    .step-icon i {
+        font-size: 38px !important;
+    }
+
+    .step-card h3 {
+        font-size: 17px !important;
+    }
+
+    /* Cache les connecteurs sur tablette pour colonnes md-6 */
+    .row .col-md-6:nth-child(2) .step-connector {
+        display: none !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media only screen and (max-width: 767px) {
+    .how-it-works-section {
+        padding: 60px 0 40px !important;
+    }
+
+    .how-it-works-section .section-title {
+        margin-bottom: 40px !important;
+    }
+
+    .how-it-works-section .section-title h2 {
+        font-size: 30px !important;
+    }
+
+    .how-it-works-section .section-title p {
+        font-size: 15px !important;
+    }
+
+    .step-card {
+        padding: 30px 20px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .step-number {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 20px !important;
+        top: -18px !important;
+    }
+
+    .step-icon {
+        width: 75px !important;
+        height: 75px !important;
+        margin: 25px auto 18px !important;
+    }
+
+    .step-icon i {
+        font-size: 34px !important;
+    }
+
+    .step-card h3 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .step-card p {
+        font-size: 13px !important;
+    }
+
+    /* Cache tous les connecteurs sur mobile */
+    .step-connector {
+        display: none !important;
+    }
+}
+
+/* ===================================
+   7. SECTION TITLES
+   =================================== */
+
+.section-title h2 {
+    color: var(--dark-text) !important;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+}
+
+.section-title p {
+    color: #6c757d !important;
+    font-size: 16px !important;
+}
+
+
+/* ===================================
+   8. WHY CHOOSE US SECTION
+   =================================== */
+
+.why-choose-section {
+    padding-top: 80px !important;
+    padding-bottom: 50px !important;
+    background: var(--white) !important;
+}
+
+.why-choose-img img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.why-choose-text {
+    margin-top: 30px !important;
+}
+
+.why-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: 25px !important;
+}
+
+.why-icon {
+    flex-shrink: 0 !important;
+    margin-right: 20px !important;
+}
+
+.why-icon i {
+    font-size: 32px !important;
+    color: var(--primary-red) !important;
+}
+
+.why-text h3 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: var(--dark-text) !important;
+    margin-bottom: 8px !important;
+}
+
+.why-text p {
+    font-size: 15px !important;
+    color: #6c757d !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* ===================================
+   9. COMPANY SECTION
+   =================================== */
+
+.company-section {
+    padding-top: 80px !important;
+    padding-bottom: 50px !important;
+}
+
+.company-card {
+    background: var(--white) !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin-bottom: 30px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+.company-card:hover {
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 8px 24px rgba(253, 22, 22, 0.15) !important;
+    transform: translateY(-5px) !important;
+}
+
+.company-card .company-logo {
+    width: 100% !important;
+    height: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+    background: #f9fafb !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+}
+
+.company-card .company-logo img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+.company-card .company-text {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.company-card .company-text h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    color: var(--dark-text) !important;
+    line-height: 1.4 !important;
+    min-height: 44px !important;
+}
+
+.company-card .company-text h3 a {
+    color: var(--dark-text) !important;
+    transition: color 0.3s ease !important;
+}
+
+.company-card .company-text h3 a:hover {
+    color: var(--primary-red) !important;
+}
+
+.company-card .company-text p {
+    font-size: 13px !important;
+    color: #6b7280 !important;
+    margin-bottom: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.company-card .company-text p i {
+    font-size: 16px !important;
+    color: var(--primary-red) !important;
+}
+
+.company-card .company-text .default-btn {
+    margin-top: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+/* ===================================
+   9. SUBSCRIBE SECTION - Redesign
+   =================================== */
+
+.subscribe-section {
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, #03143b 100%) !important;
+    padding: 80px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.subscribe-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+    opacity: 0.3 !important;
+}
+
+.subscribe-text {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.subscribe-text h2 {
+    color: var(--white) !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+}
+
+.subscribe-text p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+
+.newsletter-form {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    gap: 15px !important;
+    max-width: 500px !important;
+    margin-left: auto !important;
+}
+
+.newsletter-form .form-control {
+    flex: 1 !important;
+    height: 55px !important;
+    padding: 0 25px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+    font-size: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.newsletter-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.newsletter-form .form-control:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--white) !important;
+    outline: none !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+.subscribe-btn {
+    height: 55px !important;
+    padding: 0 35px !important;
+    background: var(--primary-red) !important;
+    border: 2px solid var(--primary-red) !important;
+    border-radius: 50px !important;
+    color: var(--white) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.subscribe-btn:hover {
+    background: var(--white) !important;
+    color: var(--primary-red) !important;
+    border-color: var(--white) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 20px rgba(253, 22, 22, 0.3) !important;
+}
+
+.subscribe-btn.disabled {
+    opacity: 1 !important;
+    cursor: pointer !important;
+}
+
+/* Responsive Newsletter */
+@media only screen and (max-width: 991px) {
+    .newsletter-form {
+        margin-left: 0 !important;
+        margin-top: 30px !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .newsletter-form {
+        flex-direction: column !important;
+    }
+
+    .subscribe-btn {
+        width: 100% !important;
+    }
+}
+
+/* ===================================
+   10. FOOTER
+   =================================== */
+
+.footer-area {
+    background: #060f24 !important;
+    color: #cccccc !important;
+}
+
+.footer-widget h3 {
+    color: var(--white) !important;
+}
+
+.footer-widget p {
+    color: #cccccc !important;
+}
+
+.footer-social a {
+    background: var(--primary-red) !important;
+    color: var(--white) !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    display: inline-block !important;
+    text-align: center !important;
+    border-radius: 50% !important;
+    margin-right: 10px !important;
+}
+
+.footer-social a:hover {
+    background: var(--secondary-blue) !important;
+}
+
+/* Copyright Area */
+.copyright-area {
+    background: #03143b !important;
+    padding: 25px 0 !important;
+}
+
+.copyright-area .copyright-item p {
+    color: #cccccc !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+
+.copyright-area a {
+    color: var(--primary-red) !important;
+}
+
+.copyright-area a:hover {
+    color: var(--white) !important;
+}
+
+/* ===================================
+   11. BOUTONS GLOBAUX - Style Uniforme
+   =================================== */
+
+/* Style global pour tous les boutons du site (inspiré du bouton de recherche) */
+.default-btn,
+a.default-btn,
+button.default-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 14px 30px !important;
+    background: linear-gradient(135deg, var(--primary-red) 0%, #ff3333 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: var(--white) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 16px rgba(253, 22, 22, 0.35) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+}
+
+.default-btn::before,
+a.default-btn::before,
+button.default-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    transition: left 0.6s !important;
+}
+
+.default-btn:hover::before,
+a.default-btn:hover::before,
+button.default-btn:hover::before {
+    left: 100% !important;
+}
+
+.default-btn:hover,
+a.default-btn:hover,
+button.default-btn:hover {
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, #0a3d7a 100%) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 24px rgba(5, 44, 101, 0.45) !important;
+    color: var(--white) !important;
+    text-decoration: none !important;
+}
+
+.default-btn:active,
+a.default-btn:active,
+button.default-btn:active {
+    transform: translateY(-1px) scale(0.98) !important;
+}
+
+.default-btn i,
+a.default-btn i,
+button.default-btn i {
+    font-size: 18px !important;
+}
+
+/* ===================================
+   12. PRELOADER
+   =================================== */
+
+.sk-circle .sk-child:before {
+    background-color: var(--primary-red) !important;
+}
+
+/* ===================================
+   12. RESPONSIVE
+   =================================== */
+
+@media only screen and (max-width: 767px) {
+    .banner-section {
+        padding-top: 120px !important;
+        padding-bottom: 80px !important;
+        min-height: 500px !important;
+    }
+
+    .banner-section .banner-content h1 {
+        font-size: 32px !important;
+    }
+
+    .section-title h2 {
+        font-size: 28px !important;
+    }
+}
+
+/* ===================================
+   13. CORRECTIONS SPÉCIFIQUES
+   =================================== */
+
+/* S'assurer que les icones Flaticon s'affichent correctement */
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before {
+    font-family: Flaticon !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+
+/* Corriger le problème de chargement infini */
+.loader-content {
+    position: fixed !important;
+    z-index: 99999 !important;
+}
