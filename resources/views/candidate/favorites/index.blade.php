@@ -152,30 +152,15 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 text-end">
-                                    <!-- Salary -->
-                                    @if($job->salary_min || $job->salary_max)
-                                        <div class="h5 text-primary mb-3">
-                                            @if($job->salary_min && $job->salary_max)
-                                                {{ number_format($job->salary_min, 0, ',', ' ') }} - {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                            @elseif($job->salary_min)
-                                                À partir de {{ number_format($job->salary_min, 0, ',', ' ') }}
-                                            @else
-                                                Jusqu'à {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                            @endif
-                                            FCFA
-                                            <br><small class="text-muted">/ {{ $job->salary_period === 'month' ? 'mois' : 'an' }}</small>
-                                        </div>
-                                    @endif
-
-                                    <!-- Action Buttons -->
-                                    <a href="{{ route('candidate.jobs.show', $job->id) }}" class="btn btn-primary btn-sm w-100 mb-2">
+                                <div class="col-md-3 text-end d-flex flex-column gap-2 justify-content-center">
+                                    <!-- Action Buttons avec style personnalisé -->
+                                    <a href="{{ route('candidate.jobs.show', $job->id) }}" class="default-btn">
                                         Voir l'offre <i class='bx bx-right-arrow-alt'></i>
                                     </a>
 
-                                    <form action="{{ route('candidate.jobs.toggleFavorite', $job->id) }}" method="POST" class="d-inline w-100">
+                                    <form action="{{ route('candidate.jobs.toggleFavorite', $job->id) }}" method="POST" class="w-100">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-danger w-100">
+                                        <button type="submit" class="btn btn-outline-danger w-100" style="border-radius: 8px; padding: 12px 20px; font-weight: 600; transition: all 0.3s ease;">
                                             <i class='bx bx-trash'></i> Retirer des favoris
                                         </button>
                                     </form>

@@ -23,19 +23,28 @@ class CandidateDashboardController extends Controller
             $profile = CandidateProfile::create(['user_id' => $user->id]);
         }
 
-        // Statistiques du candidat
+        // Statistiques du candidat (vraies données)
         $stats = [
-            'applications' => 0, // Nombre de candidatures envoyées
-            'saved_jobs' => 0,   // Offres sauvegardées
+            'applications' => $user->applications()->count(),
+            'saved_jobs' => $user->favorites()->count(),
             'profile_views' => $profile->profile_views ?? 0,
-            'new_jobs' => 0,     // Nouvelles offres correspondant au profil
+            'new_jobs' => \App\Models\JobOffer::where('status', 'active')
+                ->where('created_at', '>=', now()->subDays(7))
+                ->count(),
         ];
+
+        // Récupérer les offres recommandées (les 5 plus récentes pour le moment)
+        $recommendedJobs = \App\Models\JobOffer::with(['category', 'recruiter'])
+            ->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
 
         // Calculer la complétion du profil
         $profileCompleteness = $profile->calculateCompleteness();
         $profile->update(['profile_completeness' => $profileCompleteness]);
 
-        return view('candidate.dashboard', compact('user', 'stats', 'profile'));
+        return view('candidate.dashboard', compact('user', 'stats', 'profile', 'recommendedJobs'));
     }
 
     /**

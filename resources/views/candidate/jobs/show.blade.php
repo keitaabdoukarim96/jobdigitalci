@@ -114,21 +114,6 @@
                             </div>
                         @endif
 
-                        @if($job->salary_min || $job->salary_max)
-                            <div class="col-md-3">
-                                <small class="text-muted">Salaire:</small>
-                                <p class="fw-bold text-primary mb-0">
-                                    @if($job->salary_min && $job->salary_max)
-                                        {{ number_format($job->salary_min, 0, ',', ' ') }} - {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                    @elseif($job->salary_min)
-                                        {{ number_format($job->salary_min, 0, ',', ' ') }}+
-                                    @else
-                                        {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                    @endif
-                                    FCFA
-                                </p>
-                            </div>
-                        @endif
 
                         @if($job->application_deadline)
                             <div class="col-md-3">
@@ -263,35 +248,111 @@
                 @csrf
                 <div class="modal-body">
                     <!-- Cover Letter -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="cover_letter" class="form-label fw-bold">
-                            Lettre de motivation <span class="text-danger">*</span>
+                            <i class='bx bx-edit-alt text-primary'></i> Lettre de motivation <span class="text-danger">*</span>
                         </label>
                         <textarea name="cover_letter" id="cover_letter" rows="8"
                                   class="form-control @error('cover_letter') is-invalid @enderror"
-                                  placeholder="Expliquez pourquoi vous êtes le candidat idéal pour ce poste..." required>{{ old('cover_letter') }}</textarea>
+                                  placeholder="Expliquez pourquoi vous êtes le candidat idéal pour ce poste...&#10;&#10;Parlez de vos compétences, votre expérience et votre motivation pour rejoindre cette entreprise." required>{{ old('cover_letter') }}</textarea>
                         @error('cover_letter')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <small class="form-text text-muted">Minimum 50 caractères</small>
+                        <small class="form-text text-muted"><i class='bx bx-info-circle'></i> Minimum 50 caractères - Soyez concis et pertinent</small>
                     </div>
 
-                    <!-- CV Upload -->
-                    <div class="mb-3">
-                        <label for="cv_file" class="form-label fw-bold">CV (optionnel)</label>
-                        <input type="file" name="cv_file" id="cv_file" accept=".pdf"
-                               class="form-control @error('cv_file') is-invalid @enderror">
-                        @error('cv_file')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <small class="form-text text-muted">
-                            Format PDF uniquement, max 5 Mo. Si vous ne téléchargez pas de CV, celui de votre profil sera utilisé.
-                        </small>
+                    <!-- CV Choice Section -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">
+                            <i class='bx bx-file-blank text-primary'></i> Curriculum Vitae (CV) <span class="text-danger">*</span>
+                        </label>
+
+                        @if(auth()->user()->candidateProfile && auth()->user()->candidateProfile->cv_file)
+                            <!-- Option: Use existing CV or upload new -->
+                            <div class="card border-primary mb-3">
+                                <div class="card-body">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="cv_choice" id="use_existing_cv" value="existing" checked onchange="toggleCvUpload()">
+                                        <label class="form-check-label fw-bold" for="use_existing_cv">
+                                            <i class='bx bx-check-circle text-success'></i> Utiliser mon CV existant
+                                        </label>
+                                    </div>
+                                    <div id="existing_cv_info" class="ms-4 p-3 bg-light rounded">
+                                        <p class="mb-2 small">
+                                            <i class='bx bx-file-blank text-primary'></i>
+                                            <strong>CV actuel:</strong> {{ basename(auth()->user()->candidateProfile->cv_file) }}
+                                        </p>
+                                        <a href="{{ Storage::url(auth()->user()->candidateProfile->cv_file) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            <i class='bx bx-show'></i> Prévisualiser mon CV
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-secondary mb-3">
+                                <div class="card-body">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="cv_choice" id="upload_new_cv" value="new" onchange="toggleCvUpload()">
+                                        <label class="form-check-label fw-bold" for="upload_new_cv">
+                                            <i class='bx bx-upload text-info'></i> Télécharger un nouveau CV pour cette candidature
+                                        </label>
+                                    </div>
+                                    <div id="new_cv_upload" class="ms-4" style="display: none;">
+                                        <input type="file" name="cv_file" id="cv_file" accept=".pdf,.doc,.docx"
+                                               class="form-control @error('cv_file') is-invalid @enderror">
+                                        @error('cv_file')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <small class="form-text text-muted d-block mt-2">
+                                            <i class='bx bx-info-circle'></i> Format PDF, DOC ou DOCX - Maximum 5 Mo
+                                        </small>
+                                        <div class="alert alert-info mt-2 mb-0 small">
+                                            <i class='bx bx-info-circle'></i> <strong>Note:</strong> Ce CV sera utilisé uniquement pour cette candidature. Votre CV de profil ne sera pas modifié.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <!-- No existing CV - must upload -->
+                            <div class="alert alert-warning">
+                                <i class='bx bx-error-circle'></i> Vous n'avez pas encore de CV dans votre profil.
+                            </div>
+                            <input type="file" name="cv_file" id="cv_file" accept=".pdf,.doc,.docx"
+                                   class="form-control @error('cv_file') is-invalid @enderror" required>
+                            @error('cv_file')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            <small class="form-text text-muted d-block mt-2">
+                                <i class='bx bx-info-circle'></i> Format PDF, DOC ou DOCX - Maximum 5 Mo
+                            </small>
+                        @endif
                     </div>
                 </div>
+
+                <script>
+                function toggleCvUpload() {
+                    const useExisting = document.getElementById('use_existing_cv').checked;
+                    const existingInfo = document.getElementById('existing_cv_info');
+                    const newUpload = document.getElementById('new_cv_upload');
+                    const fileInput = document.getElementById('cv_file');
+
+                    if (useExisting) {
+                        existingInfo.style.display = 'block';
+                        newUpload.style.display = 'none';
+                        fileInput.removeAttribute('required');
+                        fileInput.value = ''; // Clear file input
+                    } else {
+                        existingInfo.style.display = 'none';
+                        newUpload.style.display = 'block';
+                        fileInput.setAttribute('required', 'required');
+                    }
+                }
+                </script>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 8px; padding: 12px 24px; font-weight: 600;">
+                        <i class='bx bx-x'></i> Annuler
+                    </button>
+                    <button type="submit" class="default-btn">
                         <i class='bx bx-send'></i> Envoyer ma candidature
                     </button>
                 </div>

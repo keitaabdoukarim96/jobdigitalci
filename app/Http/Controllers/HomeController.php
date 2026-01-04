@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JobOffer;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Pour l'instant, on retourne simplement la vue
-        // Plus tard, on ajoutera les données réelles (offres, stats, etc.)
-        return view('home');
+        // Récupérer les 6 offres les plus récentes
+        $recentJobs = JobOffer::with(['category', 'recruiter'])
+            ->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->get();
+
+        return view('home', compact('recentJobs'));
     }
 }

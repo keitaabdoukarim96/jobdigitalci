@@ -209,13 +209,13 @@
 
                                     <!-- CV Link -->
                                     @if($application->cv_file)
-                                        <a href="{{ Storage::url($application->cv_file) }}" target="_blank" class="btn btn-sm btn-outline-primary mb-2 w-100">
+                                        <a href="{{ Storage::url($application->cv_file) }}" target="_blank" class="btn btn-outline-primary mb-2 w-100" style="border-radius: 8px; padding: 12px 20px; font-weight: 600; transition: all 0.3s ease;">
                                             <i class='bx bx-download'></i> Mon CV
                                         </a>
                                     @endif
 
-                                    <!-- View Job Button -->
-                                    <a href="{{ route('candidate.jobs.show', $application->jobOffer->id) }}" class="btn btn-primary btn-sm w-100">
+                                    <!-- View Job Button avec style premium -->
+                                    <a href="{{ route('candidate.jobs.show', $application->jobOffer->id) }}" class="default-btn w-100">
                                         Voir l'offre <i class='bx bx-right-arrow-alt'></i>
                                     </a>
                                 </div>

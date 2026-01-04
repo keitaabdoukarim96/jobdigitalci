@@ -265,131 +265,48 @@
         </div>
 
         <div class="row justify-content-center">
-            <!-- Card 1 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/1.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Développeur Full Stack Laravel/Vue.js</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> TechCorp Africa</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Plateau</span>
-                        <span><i class='bx bx-filter-alt'></i> CDI - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 2 heures</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/2.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Designer UI/UX - Applications Mobiles</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> Digital Innovation Hub</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Cocody - Riviera</span>
-                        <span><i class='bx bx-filter-alt'></i> CDD - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 5 heures</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
+            @forelse($recentJobs as $job)
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="job-card-vertical">
+                        <div class="company-logo-top">
+                            @if($job->recruiter && $job->recruiter->company_logo)
+                                <img src="{{ Storage::url($job->recruiter->company_logo) }}" alt="{{ $job->company_name ?? $job->recruiter->name }}">
+                            @else
+                                <img src="{{ asset('assets/img/company-logo/default.png') }}" alt="Logo">
+                            @endif
+                        </div>
+                        <h3>
+                            <a href="{{ route('jobs.show.public', $job->id) }}">{{ $job->title }}</a>
+                        </h3>
+                        <div class="job-meta">
+                            <span><i class='bx bx-briefcase'></i> {{ $job->company_name ?? $job->recruiter->name }}</span>
+                            <span><i class='bx bx-location-plus'></i> {{ $job->location }}</span>
+                            <span><i class='bx bx-filter-alt'></i>
+                                {{ match($job->employment_type) {
+                                    'full-time' => 'Temps plein',
+                                    'part-time' => 'Temps partiel',
+                                    'contract' => 'Contrat',
+                                    'internship' => 'Stage',
+                                    'freelance' => 'Freelance',
+                                    default => $job->employment_type
+                                } }}
+                            </span>
+                        </div>
+                        <div class="job-footer">
+                            <span class="job-time">Publié {{ $job->created_at->diffForHumans() }}</span>
+                            <a href="{{ route('jobs.show.public', $job->id) }}" class="default-btn btn-small">Voir l'offre</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/3.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Data Analyst - Business Intelligence</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> Banque Atlantique CI</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Plateau</span>
-                        <span><i class='bx bx-filter-alt'></i> CDI - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 1 jour</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        <i class='bx bx-info-circle' style="font-size: 48px;"></i>
+                        <h5 class="mt-3">Aucune offre disponible pour le moment</h5>
+                        <p>Revenez bientôt pour découvrir de nouvelles opportunités !</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/4.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Chef de Projet Digital - E-commerce</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> Orange Digital Center</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Marcory</span>
-                        <span><i class='bx bx-filter-alt'></i> CDI - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 2 jours</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/5.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Ingénieur DevOps - Cloud AWS/Azure</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> MTN Côte d'Ivoire</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Cocody - Deux Plateaux</span>
-                        <span><i class='bx bx-filter-alt'></i> CDI - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 3 jours</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="job-card-vertical">
-                    <div class="company-logo-top">
-                        <img src="{{ asset('assets/img/company-logo/1.png') }}" alt="Logo">
-                    </div>
-                    <h3>
-                        <a href="#">Développeur Mobile React Native</a>
-                    </h3>
-                    <div class="job-meta">
-                        <span><i class='bx bx-briefcase'></i> Moov Africa</span>
-                        <span><i class='bx bx-location-plus'></i> Abidjan, Marcory Zone 4</span>
-                        <span><i class='bx bx-filter-alt'></i> CDD - Temps plein</span>
-                    </div>
-                    <div class="job-footer">
-                        <span class="job-time">Publié il y a 4 jours</span>
-                        <a href="#" class="default-btn btn-small">Voir l'offre</a>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
 
         <!-- Bouton Voir Toutes les Offres -->

@@ -6,31 +6,31 @@
 
 @section('sidebar')
     <div class="nav-item">
-        <a href="{{ route('candidate.dashboard') }}" class="nav-link">
+        <a href="{{ route('candidate.dashboard') }}" class="nav-link {{ request()->routeIs('candidate.dashboard') ? 'active' : '' }}">
             <i class='bx bx-home-alt'></i>
             <span>Tableau de bord</span>
         </a>
     </div>
     <div class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{{ route('candidate.jobs.index') }}" class="nav-link {{ request()->routeIs('candidate.jobs.*') ? 'active' : '' }}">
             <i class='bx bx-search'></i>
             <span>Rechercher un emploi</span>
         </a>
     </div>
     <div class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{{ route('candidate.applications.index') }}" class="nav-link {{ request()->routeIs('candidate.applications.*') ? 'active' : '' }}">
             <i class='bx bx-file'></i>
             <span>Mes candidatures</span>
         </a>
     </div>
     <div class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{{ route('candidate.favorites.index') }}" class="nav-link {{ request()->routeIs('candidate.favorites.*') ? 'active' : '' }}">
             <i class='bx bx-bookmark'></i>
             <span>Offres sauvegardées</span>
         </a>
     </div>
     <div class="nav-item">
-        <a href="{{ route('candidate.profile') }}" class="nav-link active">
+        <a href="{{ route('candidate.profile') }}" class="nav-link {{ request()->routeIs('candidate.profile') ? 'active' : '' }}">
             <i class='bx bx-user'></i>
             <span>Mon profil</span>
         </a>
@@ -161,7 +161,7 @@
 
                         <!-- Bouton Enregistrer pour Informations Personnelles -->
                         <div class="text-end mt-3">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="default-btn">
                                 <i class='bx bx-save'></i>
                                 Enregistrer les modifications
                             </button>
@@ -268,7 +268,7 @@
 
                         <!-- Bouton Enregistrer pour Profil Professionnel -->
                         <div class="text-end mt-3">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="default-btn">
                                 <i class='bx bx-save'></i>
                                 Enregistrer les modifications
                             </button>
@@ -345,7 +345,7 @@
 
                         <!-- Bouton Enregistrer pour Réseaux Sociaux -->
                         <div class="text-end mt-3">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="default-btn">
                                 <i class='bx bx-save'></i>
                                 Enregistrer les modifications
                             </button>
@@ -436,7 +436,7 @@
                 </div>
 
                 <!-- Bouton Retour au dashboard -->
-                <a href="{{ route('candidate.dashboard') }}" class="btn btn-outline-secondary w-100">
+                <a href="{{ route('candidate.dashboard') }}" class="default-btn w-100">
                     <i class='bx bx-arrow-back'></i>
                     Retour au dashboard
                 </a>

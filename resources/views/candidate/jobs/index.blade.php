@@ -169,7 +169,7 @@
                                         {{ $job->company_name ?? $job->recruiter->name }}
                                     </p>
 
-                                    <!-- Badges -->
+                                    <!-- Badges avec couleurs personnalisées -->
                                     <div class="mb-3">
                                         @if($job->category)
                                             <span class="badge bg-primary me-2">
@@ -230,24 +230,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 text-end">
-                                    <!-- Salary -->
-                                    @if($job->salary_min || $job->salary_max)
-                                        <div class="h5 text-primary mb-3">
-                                            @if($job->salary_min && $job->salary_max)
-                                                {{ number_format($job->salary_min, 0, ',', ' ') }} - {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                            @elseif($job->salary_min)
-                                                À partir de {{ number_format($job->salary_min, 0, ',', ' ') }}
-                                            @else
-                                                Jusqu'à {{ number_format($job->salary_max, 0, ',', ' ') }}
-                                            @endif
-                                            FCFA
-                                            <br><small class="text-muted">/ {{ $job->salary_period === 'month' ? 'mois' : 'an' }}</small>
-                                        </div>
-                                    @endif
-
-                                    <!-- View Button -->
-                                    <a href="{{ route('candidate.jobs.show', $job->id) }}" class="btn btn-primary">
+                                <div class="col-md-3 text-end d-flex align-items-center justify-content-end">
+                                    <!-- View Button avec style de la page d'accueil -->
+                                    <a href="{{ route('candidate.jobs.show', $job->id) }}" class="default-btn">
                                         Voir l'offre <i class='bx bx-right-arrow-alt'></i>
                                     </a>
                                 </div>

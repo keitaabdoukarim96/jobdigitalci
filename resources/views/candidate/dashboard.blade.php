@@ -96,16 +96,54 @@
             <div class="card">
                 <div class="card-header bg-white d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Offres recommandées pour vous</h5>
-                    <a href="#" class="btn btn-sm btn-outline-primary">Voir tout</a>
+                    <a href="{{ route('candidate.jobs.index') }}" class="btn btn-sm btn-outline-primary">Voir tout</a>
                 </div>
                 <div class="card-body">
-                    <div class="text-center py-5 text-muted">
-                        <i class='bx bx-briefcase' style="font-size: 48px;"></i>
-                        <p class="mt-3">Aucune offre recommandée pour le moment</p>
-                        <a href="#" class="btn btn-primary mt-2">
-                            <i class='bx bx-search'></i> Rechercher des emplois
-                        </a>
-                    </div>
+                    @if($recommendedJobs->isEmpty())
+                        <div class="text-center py-5 text-muted">
+                            <i class='bx bx-briefcase' style="font-size: 48px;"></i>
+                            <p class="mt-3">Aucune offre recommandée pour le moment</p>
+                            <a href="{{ route('candidate.jobs.index') }}" class="btn btn-primary mt-2">
+                                <i class='bx bx-search'></i> Rechercher des emplois
+                            </a>
+                        </div>
+                    @else
+                        <div class="list-group list-group-flush">
+                            @foreach($recommendedJobs as $job)
+                                <a href="{{ route('candidate.jobs.show', $job->id) }}" class="list-group-item list-group-item-action border-0 px-0 py-3">
+                                    <div class="d-flex w-100 justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-2 fw-bold">{{ $job->title }}</h6>
+                                            <p class="mb-2 text-muted small">
+                                                <i class='bx bx-buildings'></i> {{ $job->company_name ?? $job->recruiter->name }}
+                                                <span class="ms-3"><i class='bx bx-map'></i> {{ $job->location }}</span>
+                                            </p>
+                                            <div>
+                                                @if($job->category)
+                                                    <span class="badge bg-primary me-2">
+                                                        <i class='bx {{ $job->category->icon }}'></i> {{ $job->category->name }}
+                                                    </span>
+                                                @endif
+                                                <span class="badge bg-light text-dark">
+                                                    {{ match($job->employment_type) {
+                                                        'full-time' => 'Temps plein',
+                                                        'part-time' => 'Temps partiel',
+                                                        'contract' => 'Contrat',
+                                                        'internship' => 'Stage',
+                                                        'freelance' => 'Freelance',
+                                                        default => $job->employment_type
+                                                    } }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="text-end ms-3">
+                                            <small class="text-muted">{{ $job->created_at->diffForHumans() }}</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

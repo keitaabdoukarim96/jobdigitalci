@@ -17,6 +17,11 @@ Route::get('/jobs/search', function () {
     return redirect()->route('home')->with('info', 'La recherche sera bientôt disponible');
 })->name('jobs.search');
 
+// Routes publiques pour visualisation des offres (accessible aux invités)
+Route::get('/jobs/{id}', [JobOfferController::class, 'showPublic'])->name('jobs.show.public');
+Route::get('/jobs/{id}/apply-guest', [JobOfferController::class, 'showGuestApplicationForm'])->name('jobs.apply.guest');
+Route::post('/jobs/{id}/apply-guest', [JobOfferController::class, 'submitGuestApplication'])->name('jobs.apply.guest.submit');
+
 // ===========================
 // Routes d'Authentification
 // ===========================
