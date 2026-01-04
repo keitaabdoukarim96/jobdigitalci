@@ -28,7 +28,7 @@
 
             <!-- Application Form Card -->
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header text-white" style="background: linear-gradient(135deg, #fd1616 0%, #ff4444 100%); border: none;">
                     <h4 class="mb-0">
                         <i class='bx bx-user-plus'></i> Créer votre compte et postuler
                     </h4>
@@ -190,9 +190,4 @@
     </div>
 </div>
 
-<style>
-.card-header.bg-primary {
-    background: linear-gradient(135deg, #052c65 0%, #0a4395 100%) !important;
-}
-</style>
 @endsection

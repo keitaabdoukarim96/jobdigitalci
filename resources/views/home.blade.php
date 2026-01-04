@@ -46,7 +46,7 @@
                             </div>
                         </div>
 
-                        <!-- Ligne 2: Filtres Catégories -->
+                        <!-- Ligne 2: Filtres Catégories (Dynamique) -->
                         <div class="row form-filters">
                             <div class="col-12">
                                 <div class="filter-group">
@@ -55,26 +55,10 @@
                                         <input type="radio" id="cat-all" name="category" value="" checked>
                                         <label for="cat-all" class="filter-btn">Toutes</label>
 
-                                        <input type="radio" id="cat-dev" name="category" value="developpement">
-                                        <label for="cat-dev" class="filter-btn">Développement</label>
-
-                                        <input type="radio" id="cat-design" name="category" value="design">
-                                        <label for="cat-design" class="filter-btn">Design & UX/UI</label>
-
-                                        <input type="radio" id="cat-data" name="category" value="data">
-                                        <label for="cat-data" class="filter-btn">Data & IA</label>
-
-                                        <input type="radio" id="cat-marketing" name="category" value="marketing">
-                                        <label for="cat-marketing" class="filter-btn">Marketing Digital</label>
-
-                                        <input type="radio" id="cat-devops" name="category" value="devops">
-                                        <label for="cat-devops" class="filter-btn">DevOps & Cloud</label>
-
-                                        <input type="radio" id="cat-cyber" name="category" value="cybersecurite">
-                                        <label for="cat-cyber" class="filter-btn">Cybersécurité</label>
-
-                                        <input type="radio" id="cat-support" name="category" value="support">
-                                        <label for="cat-support" class="filter-btn">Support IT</label>
+                                        @foreach($categories as $category)
+                                            <input type="radio" id="cat-{{ $category->id }}" name="category" value="{{ $category->id }}">
+                                            <label for="cat-{{ $category->id }}" class="filter-btn">{{ $category->name }}</label>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -86,19 +70,22 @@
                                 <div class="filter-group">
                                     <label class="filter-label"><i class='bx bx-file'></i> Type de contrat</label>
                                     <div class="filter-buttons">
-                                        <input type="radio" id="contract-all" name="contract" value="" checked>
+                                        <input type="radio" id="contract-all" name="employment_type" value="" checked>
                                         <label for="contract-all" class="filter-btn">Tous</label>
 
-                                        <input type="radio" id="contract-cdi" name="contract" value="cdi">
-                                        <label for="contract-cdi" class="filter-btn">CDI</label>
+                                        <input type="radio" id="contract-fulltime" name="employment_type" value="full-time">
+                                        <label for="contract-fulltime" class="filter-btn">Temps plein</label>
 
-                                        <input type="radio" id="contract-cdd" name="contract" value="cdd">
-                                        <label for="contract-cdd" class="filter-btn">CDD</label>
+                                        <input type="radio" id="contract-parttime" name="employment_type" value="part-time">
+                                        <label for="contract-parttime" class="filter-btn">Temps partiel</label>
 
-                                        <input type="radio" id="contract-stage" name="contract" value="stage">
-                                        <label for="contract-stage" class="filter-btn">Stage</label>
+                                        <input type="radio" id="contract-contract" name="employment_type" value="contract">
+                                        <label for="contract-contract" class="filter-btn">Contrat</label>
 
-                                        <input type="radio" id="contract-freelance" name="contract" value="freelance">
+                                        <input type="radio" id="contract-internship" name="employment_type" value="internship">
+                                        <label for="contract-internship" class="filter-btn">Stage</label>
+
+                                        <input type="radio" id="contract-freelance" name="employment_type" value="freelance">
                                         <label for="contract-freelance" class="filter-btn">Freelance</label>
                                     </div>
                                 </div>
@@ -312,7 +299,7 @@
         <!-- Bouton Voir Toutes les Offres -->
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <a href="#" class="default-btn">
+                <a href="{{ route('jobs.search') }}" class="default-btn">
                     Voir Toutes les Offres
                     <i class='bx bx-chevron-right'></i>
                 </a>

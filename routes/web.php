@@ -12,10 +12,8 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 // Page d'accueil publique
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route temporaire pour la recherche (sera implémentée plus tard)
-Route::get('/jobs/search', function () {
-    return redirect()->route('home')->with('info', 'La recherche sera bientôt disponible');
-})->name('jobs.search');
+// Route de recherche publique
+Route::get('/jobs/search', [HomeController::class, 'search'])->name('jobs.search');
 
 // Routes publiques pour visualisation des offres (accessible aux invités)
 Route::get('/jobs/{id}', [JobOfferController::class, 'showPublic'])->name('jobs.show.public');
