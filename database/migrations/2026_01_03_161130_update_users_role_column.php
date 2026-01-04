@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,10 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('experiences', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        // Modifier la colonne role pour supporter admin, candidate, recruiter
+        DB::statement("ALTER TABLE users MODIFY COLUMN role VARCHAR(255) NOT NULL");
     }
 
     /**
@@ -22,6 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('experiences');
+        // Retour à l'état précédent si nécessaire
+        DB::statement("ALTER TABLE users MODIFY COLUMN role VARCHAR(255) NOT NULL");
     }
 };

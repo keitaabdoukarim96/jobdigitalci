@@ -69,34 +69,38 @@ Charte graphique:
 
 /* Dropdown menu - Redesign visible et moderne */
 .navbar-area .main-nav nav ul li .dropdown-menu {
-    background: var(--white) !important;
-    border: 2px solid #e5e7eb !important;
+  background: #ffffff !important; 
+    border: none !important;
     border-radius: 8px !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-    padding: 12px 0 !important;
-    margin-top: 12px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+    padding: 10px !important;
+    margin-top: 15px !important;
     min-width: 220px !important;
 }
 
 .navbar-area .main-nav nav ul li .dropdown-menu li {
     padding: 0 !important;
+  background: transparent !important;
 }
 
 .navbar-area .main-nav nav ul li .dropdown-menu li a {
-    color: var(--dark-text) !important;
-    padding: 12px 25px !important;
+    color: var(--secondary-blue) !important;
+    background: #ffffff !important;
+    padding: 12px 20px !important;
     display: block !important;
     font-size: 14px !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     transition: all 0.3s ease !important;
     border-left: 3px solid transparent !important;
+    margin: 3px 0 !important;
+    border-radius: 6px !important;
 }
 
 .navbar-area .main-nav nav ul li .dropdown-menu li a:hover {
-    color: var(--primary-red) !important;
-    background: rgba(253, 22, 22, 0.05) !important;
-    border-left-color: var(--primary-red) !important;
-    padding-left: 30px !important;
+    color: #ffffff !important;
+    background: var(--primary-red) !important;
+    border-left-color: #ffffff !important;
+    padding-left: 25px !important;
 }
 
 /* Boutons dans la navbar */
@@ -126,6 +130,65 @@ Charte graphique:
     background: var(--white) !important;
     color: var(--primary-red) !important;
     border-color: var(--white) !important;
+}
+
+/* Gestion des boutons auth mobile vs desktop */
+/* Par défaut (desktop): cacher les boutons dans le menu, afficher les boutons externes */
+.mobile-auth-buttons {
+    display: none !important;
+}
+
+.desktop-auth-buttons {
+    display: flex !important;
+}
+
+/* Mobile (991px et moins): afficher les boutons dans le menu, cacher les boutons externes */
+@media only screen and (max-width: 991px) {
+    .mobile-auth-buttons {
+        display: block !important;
+    }
+
+    .desktop-auth-buttons,
+    .navbar-area .other-option,
+    .navbar-area .desktop-auth-buttons,
+    .other-option.desktop-auth-buttons {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Style des liens auth dans le menu mobile - comme liens normaux */
+    .mobile-auth-buttons .nav-link {
+        font-weight: 400 !important;
+        font-size: 15px !important;
+        padding: 20px 20px !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        text-align: left !important;
+        display: block !important;
+        width: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+        color: var(--dark-text) !important;
+    }
+
+    /* Style S'inscrire en mobile - identique aux autres liens */
+    .mobile-auth-buttons:first-of-type .nav-link {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+        color: var(--dark-text) !important;
+    }
+
+    /* Style Connexion en mobile - identique aux autres liens */
+    .mobile-auth-buttons:last-of-type .nav-link {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+        color: var(--dark-text) !important;
+    }
 }
 
 /* ===================================
@@ -1427,6 +1490,7 @@ a {
     margin-bottom: 15px !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 5px !important;
 }
 

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('candidate_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('job_offer_id')->constrained('job_offers')->onDelete('cascade');
             $table->timestamps();
+
+            // Un candidat ne peut sauvegarder qu'une fois la même offre
+            $table->unique(['candidate_id', 'job_offer_id']);
         });
     }
 

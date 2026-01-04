@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('candidate_skills', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('name'); // Nom de la compétence (ex: PHP, JavaScript, React)
+            $table->string('category')->nullable(); // programming, design, management, etc.
+            $table->integer('level')->default(3); // 1-5: débutant à expert
+            $table->integer('years_of_experience')->default(0);
             $table->timestamps();
         });
     }

@@ -120,11 +120,40 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">Contact</a>
                                 </li>
+
+                                <!-- Boutons pour mobile dans le menu -->
+                                @auth
+                                    <li class="nav-item mobile-auth-buttons">
+                                        <a href="{{ route('dashboard') }}" class="nav-link">Mon Dashboard</a>
+                                    </li>
+                                    <li class="nav-item mobile-auth-buttons">
+                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <button type="submit" class="nav-link" style="background: none; border: none; cursor: pointer;">Déconnexion</button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li class="nav-item mobile-auth-buttons">
+                                        <a href="{{ route('register.selection') }}" class="nav-link">S'inscrire</a>
+                                    </li>
+                                    <li class="nav-item mobile-auth-buttons">
+                                        <a href="{{ route('login') }}" class="nav-link">Connexion</a>
+                                    </li>
+                                @endauth
                             </ul>
 
-                            <div class="other-option">
-                                <a href="#" class="default-btn btn-outline">S'inscrire</a>
-                                <a href="#" class="default-btn">Connexion</a>
+                            <!-- Boutons pour desktop en dehors du menu -->
+                            <div class="other-option desktop-auth-buttons">
+                                @auth
+                                    <a href="{{ route('dashboard') }}" class="default-btn btn-outline">Mon Dashboard</a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="default-btn">Déconnexion</button>
+                                    </form>
+                                @else
+                                    <a href="{{ route('register.selection') }}" class="default-btn btn-outline">S'inscrire</a>
+                                    <a href="{{ route('login') }}" class="default-btn">Connexion</a>
+                                @endauth
                             </div>
                         </div>
                     </nav>
